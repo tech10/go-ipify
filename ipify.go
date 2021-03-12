@@ -17,6 +17,8 @@ import (
 // backoff -- if this function fails for any reason, the request will be retried
 // up to 3 times.
 //
+// This function will return either the IPV4 or IPV6 address, which ever resolves first.
+//
 // Usage:
 //
 //		package main
@@ -36,7 +38,21 @@ import (
 //		}
 
 func GetIp() (string, error) {
-	return getIp(API_URI)
+	return getIp(API_URI_64)
+}
+
+// GetIp4 returns the IPV4 address of your computer.
+// Use this as you would use the GetIp() function.
+
+func GetIp4() (string, error) {
+	return getIp(API_URI_4)
+}
+
+// GetIp6 returns the IPV6 address of your computer.
+// Use this as you would use the GetIp() function.
+
+func GetIp6() (string, error) {
+	return getIp(API_URI_6)
 }
 
 func getIp(url string) (string, error) {
