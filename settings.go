@@ -12,10 +12,13 @@ const VERSION = "2.0"
 // The maximum amount of tries to attempt when making API calls.
 const MAX_TRIES = 3
 
-// This is the ipify service base URI.  This is where all API requests go.
-// We will use all API requests available.
+// This is the ipify service base URI for IPV4 resolution.
 const API_URI_4 = "https://api.ipify.org"
+
+// This is the ipify service base URI for IPV4 or IPV6 resolution, whichever comes first.
 const API_URI_64 = "https://api64.ipify.org"
+
+// This is the ipify service base URI for IPV6 resolution.
 const API_URI_6 = "https://api6.ipify.org"
 
 // The user-agent string is provided so that I can (eventually) keep track of
