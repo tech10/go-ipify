@@ -5,11 +5,10 @@ package ipify
 import (
 	"errors"
 	"fmt"
+	"github.com/jpillora/backoff"
 	"io/ioutil"
 	"net/http"
 	"time"
-
-	"github.com/jpillora/backoff"
 )
 
 // GetIp queries the ipify service (http://www.ipify.org) to retrieve this
@@ -35,19 +34,21 @@ import (
 //				fmt.Println("My IP address is:", ip)
 //			}
 //		}
+
 func GetIp() (string, error) {
+	return getIp(API_URI)
+}
+
+func getIp(url string) (string, error) {
 	b := &backoff.Backoff{
 		Jitter: true,
 	}
 	client := &http.Client{}
-
-	req, err := http.NewRequest("GET", API_URI, nil)
+	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return "", wrapError(err)
 	}
-
 	req.Header.Set("User-Agent", USER_AGENT)
-
 	for tries := 0; tries < MAX_TRIES; tries++ {
 		var resp *http.Response
 		resp, err = client.Do(req)
@@ -56,31 +57,22 @@ func GetIp() (string, error) {
 			time.Sleep(d)
 			continue
 		}
-
 		defer resp.Body.Close()
-
 		var ip []byte
 		ip, err = ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return "", wrapError(err)
 		}
-
 		if resp.StatusCode != http.StatusOK {
-			description :=
-				fmt.Sprintf("Received invalid status code %d from ipify: %s. The service might be experiencing issues.",
-					resp.StatusCode, resp.Status)
+			description := fmt.Sprintf("Received invalid status code %d from ipify: %s. The service might be experiencing issues.", resp.StatusCode, resp.Status)
 			return "", errors.New(description)
 		}
-
 		return string(ip), nil
 	}
-
 	return "", wrapError(err)
 }
 
 func wrapError(inner error) error {
-	description :=
-		fmt.Sprintf("The request failed with error %s. This is most likely due to a networking error of some sort.",
-			inner.Error())
+	description := fmt.Sprintf("The request failed with error %s. This is most likely due to a networking error of some sort.", inner.Error())
 	return errors.New(description)
 }
