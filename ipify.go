@@ -25,7 +25,7 @@ import (
 //
 //		import (
 //			"fmt"
-//			"github.com/rdegges/go-ipify"
+//			"github.com/tech10/go-ipify"
 //		)
 //
 //		func main() {
@@ -36,21 +36,18 @@ import (
 //				fmt.Println("My IP address is:", ip)
 //			}
 //		}
-
 func GetIp() (string, error) {
 	return getIp(API_URI_64)
 }
 
 // GetIp4 returns the IPV4 address of your computer.
 // Use this as you would use the GetIp() function.
-
 func GetIp4() (string, error) {
 	return getIp(API_URI_4)
 }
 
 // GetIp6 returns the IPV6 address of your computer.
 // Use this as you would use the GetIp() function.
-
 func GetIp6() (string, error) {
 	return getIp(API_URI_6)
 }
