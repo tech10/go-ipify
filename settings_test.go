@@ -1,7 +1,6 @@
 package ipify
 
 import (
-	"fmt"
 	"runtime"
 	"strings"
 	"testing"
@@ -14,5 +13,5 @@ func Test_UserAgent(t *testing.T) {
 	if !strings.Contains(USER_AGENT, VERSION) {
 		t.Error("USER_AGENT doesn't contain the library version:", USER_AGENT)
 	}
-	fmt.Println("User agent: " + USER_AGENT)
+	t.Log("User agent: " + USER_AGENT)
 }
