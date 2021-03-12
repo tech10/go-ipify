@@ -1,27 +1,24 @@
 package ipify
 
 import (
-	"fmt"
 	"testing"
 )
 
-func TestGetIp(t *testing.T) {
-	originalApiUri := API_URI
-
-	ip, err := GetIp()
+func Test_getIp(t *testing.T) {
+	ApiUri := API_URI
+	ip, err := getIp(ApiUri)
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
-	fmt.Println(ip)
+	t.Log(ip)
+}
 
-	API_URI = "https://api.ipifyyyyyyyyyyyy.org"
-
-	ip, err = GetIp()
+func Test_getIpFailure(t *testing.T) {
+	ApiUri := "https://api.ipifyyyyyyyyyyyy.org"
+	ip, err := getIp(ApiUri)
 	if err == nil || ip != "" {
-		t.Error("Request to https://api.ipifyyyyyyyyyyyy.org should have failed, but succeeded.")
+		t.Fatal("Request to " + ApiUri + " should have failed, but succeeded.")
 	} else {
-		fmt.Println(err)
+		t.Log(err)
 	}
-
-	API_URI = originalApiUri
 }
