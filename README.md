@@ -2,15 +2,15 @@
 
 The official client library for [ipify][]: *A Simple IP Address API*.
 
-[![GitHub License](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://raw.githubusercontent.com/rdegges/go-ipify/master/UNLICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/rdegges/go-ipify.svg)](https://github.com/rdegges/go-ipify/stargazers)
-[![GoDoc](https://godoc.org/github.com/rdegges/go-ipify?status.svg)](https://godoc.org/github.com/rdegges/go-ipify)
-[![Build Status](https://travis-ci.org/rdegges/go-ipify.svg?branch=master)](https://travis-ci.org/rdegges/go-ipify)
+[![GitHub License](https://img.shields.io/badge/license-Unlicense-blue.svg)](https://raw.githubusercontent.com/tech10/go-ipify/personal/UNLICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/rdegges/go-ipify.svg)](https://github.com/tech10/go-ipify/stargazers)
+[![GoDoc](https://godoc.org/github.com/tech10/go-ipify?status.svg)](https://godoc.org/github.com/tech10/go-ipify)
+[![Build Status](https://travis-ci.com/tech10/go-ipify.svg?branch=personal)](https://travis-ci.com/tech10/go-ipify)
 
 
 ## Meta
 
-- Author: Randall Degges
+- Original Author: Randall Degges
 - Email: r@rdegges.com
 - Site: http://www.rdegges.com
 - Status: maintained, active
@@ -41,7 +41,7 @@ This library also has some other nice features you might care about:
 To install `ipify`, simply run:
 
 ```console
-$ go get github.com/rdegges/go-ipify
+$ go get github.com/tech10/go-ipify
 ```
 
 This will install the latest version of the library automatically.
@@ -56,7 +56,7 @@ package main
 
 import (
     "fmt"
-    "github.com/rdegges/go-ipify"
+    "github.com/tech10/go-ipify"
 )
 
 func main() {
@@ -94,8 +94,7 @@ happy to review and merge pull requests.
 The standard contribution workflow should look something like this:
 
 - Fork this project on Github.
-- Make some changes in the master branch (*this project is simple, so no need to
-  complicate things*).
+- Make some changes in a feature branch.
 - Send a pull request when ready.
 
 Also, if you're making changes, please write tests for your changes -- this

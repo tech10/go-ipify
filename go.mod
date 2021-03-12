@@ -1,4 +1,4 @@
-module github.com/rdegges/go-ipify
+module github.com/tech10/go-ipify
 
 go 1.13
 
