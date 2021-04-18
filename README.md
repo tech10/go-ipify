@@ -74,7 +74,7 @@ func main() {
 	}
 
 	// For IPV4 only.
-	ip4, err = ipify.GetIp()
+	ip4, err = ipify.GetIp4()
 	if err != nil {
 		fmt.Println("Couldn't get my IPV4 address:", err)
 	} else {
@@ -82,11 +82,11 @@ func main() {
 	}
 
 	// For IPV6 only.
-	ip6, err = ipify.GetIp()
+	ip6, err = ipify.GetIp6()
 	if err != nil {
 		fmt.Println("Couldn't get my IP address:", err)
 	} else {
-		fmt.Println("My IPV6 address is:", ip)
+		fmt.Println("My IPV6 address is:", ip6)
 	}
 }
 ```
